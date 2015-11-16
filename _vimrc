@@ -100,6 +100,28 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+"NeoBundle
+if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
+  if has('vim_starting')
+    "初回起動時のみruntimepathにneobundleのパスを指定する
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
+  
+  "neobundleを初期化
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  
+  "インストールするプラグインをここに記述
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/vimfiler'
+  NeoBundle 'davidhalter/jedi-vim'
+  
+  call neobundle#end()
+  
+  filetype plugin indent on
+
+"クリップボード連携
+set clipboard=unnamed
+
 "キーマップ
 nnoremap [ %
 nnoremap ] %
