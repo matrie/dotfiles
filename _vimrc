@@ -119,6 +119,8 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   
   filetype plugin indent on
 
+endif
+
 "クリップボード連携
 set clipboard=unnamed
 
