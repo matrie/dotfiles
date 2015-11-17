@@ -139,8 +139,10 @@ inoremap <C-k> <C-g><C-k>
 "undoファイルの場所
 set undodir=D:\active\work\tech\99_textbkup
 
-"バックアップファイルの場所
-set backupdir=D:\active\work\tech\99_textbkup
+if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
+  "バックアップファイルの場所
+  set backupdir=D:\active\work\tech\99_textbkup
+endif
 
 "文字コードの設定
 set fileencoding=utf-8
