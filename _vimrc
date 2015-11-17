@@ -158,10 +158,11 @@ set expandtab
 
 " vim-indent-guides
 let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=110
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=140
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=22
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=56
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
 "カラースキーム
 colorscheme darkblue
+set background=dark
