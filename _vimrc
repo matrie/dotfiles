@@ -137,10 +137,10 @@ inoremap <C-u> <C-c><C-u>
 inoremap <C-j> <C-g><C-j>
 inoremap <C-k> <C-g><C-k>
 
-"undoファイルの場所
-set undodir=D:\active\work\tech\99_textbkup
-
 if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
+  "undoファイルの場所
+  set undodir=D:\active\work\tech\99_textbkup
+  
   "バックアップファイルの場所
   set backupdir=D:\active\work\tech\99_textbkup
 endif
