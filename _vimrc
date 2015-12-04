@@ -1,4 +1,3 @@
-
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -177,6 +176,9 @@ if s:is_cygwin
     let &t_EI .= "\e[1 q"
     let &t_te .= "\e[0 q"
   endif
+  "カラースキーム
+  colorscheme molokai
+  set background=dark
 else
   "カラースキーム
   colorscheme darkblue
