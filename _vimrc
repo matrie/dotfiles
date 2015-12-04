@@ -163,6 +163,22 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=56
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-"カラースキーム
-colorscheme darkblue
-set background=dark
+"cygwin用設定
+let s:is_cygwin  =  has('win32unix')
+
+if s:is_cygwin
+  if &term =~# '^xterm' && &t_Co < 256
+    set t_Co=256  " Extend terminal color of xterm
+  endif
+  if &term !=# 'cygwin'  " not in command prompt
+    " Change cursor shape depending on mode
+    let &t_ti .= "\e[1 q"
+    let &t_SI .= "\e[5 q"
+    let &t_EI .= "\e[1 q"
+    let &t_te .= "\e[0 q"
+  endif
+else
+  "カラースキーム
+  colorscheme darkblue
+  set background=dark
+endif
