@@ -1,67 +1,9 @@
-"NeoBundle
-if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-  if has('vim_starting')
-    "初回起動時のみruntimepathにneobundleのパスを指定する
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-  endif
-  
-  "neobundleを初期化
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  
-  "インストールするプラグインをここに記述
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimfiler'
-  NeoBundle 'davidhalter/jedi-vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  
-  call neobundle#end()
-  
-  filetype plugin indent on
-
-endif
-
-"クリップボード連携
-set clipboard=unnamed
-
-"キーマップ
-nnoremap [ %
-nnoremap ] %
-nnoremap <Space>l $
-nnoremap <Space>o o<Esc>
-nnoremap <Space>u i# -*- coding: utf-8 -*-<Esc>
-nnoremap <Space>i iif __name__=="__main__":<Return>
-inoremap <C-d> <C-c><C-d>
-inoremap <C-u> <C-c><C-u>
-inoremap <C-j> <C-g><C-j>
-inoremap <C-k> <C-g><C-k>
-
-if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
-  "undoファイルの場所
-  set undodir=D:\active\work\tech\99_textbkup
-  
-  "バックアップファイルの場所
-  set backupdir=D:\active\work\tech\99_textbkup
-endif
-
-"文字コードの設定
-set fileencoding=utf-8
-
-"行番号の追加
-set number
-
-"ソフトタブ設定
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
-" vim-indent-guides
-let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=22
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=56
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
+"IMEのONOFF状態を保存しない
+set iminsert=0
+set imsearch=-1
 
 "カラースキーム
 set t_Co=256
 colorscheme molokai
 set background=dark
+    
