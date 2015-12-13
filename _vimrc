@@ -136,13 +136,6 @@ inoremap <C-u> <C-c><C-u>
 inoremap <C-j> <C-g><C-j>
 inoremap <C-k> <C-g><C-k>
 
-if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
-  "undoファイルの場所
-  set undodir=D:\active\work\tech\99_textbkup
-  
-  "バックアップファイルの場所
-  set backupdir=D:\active\work\tech\99_textbkup
-endif
 
 "文字コードの設定
 set fileencoding=utf-8
@@ -151,8 +144,8 @@ set fileencoding=utf-8
 set number
 
 "ソフトタブ設定
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " vim-indent-guides
@@ -162,8 +155,27 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=73
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-"cygwin setting
 let s:is_cygwin  =  has('win32unix')
+
+if s:is_cygwin
+  "cygwin
+  if isdirectory(expand("~/.vim"))
+    "undofile directory
+    set undodir=~/.vim/back_undo
+    
+    "backupfile directory
+    set backupdir=~/.vim/back_undo
+  endif
+else
+  "not cygwin setting
+  if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
+    "undofile directory
+    set undodir=D:\active\work\tech\99_textbkup
+    
+    "backupfile directory
+    set backupdir=D:\active\work\tech\99_textbkup
+  endif
+endif
 
 if s:is_cygwin
   if &term =~# '^xterm' && &t_Co < 256
