@@ -114,6 +114,7 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   NeoBundle 'Shougo/vimfiler'
   NeoBundle 'davidhalter/jedi-vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'nanotech/jellybeans.vim'
   
   call neobundle#end()
   
