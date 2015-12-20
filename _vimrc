@@ -31,6 +31,8 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
+set ignorecase
+set smartcase
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -158,6 +160,7 @@ let g:indent_guides_guide_size=1
 
 let s:is_cygwin  =  has('win32unix')
 
+"set backupfile and undofile
 if s:is_cygwin
   "cygwin
   if isdirectory(expand("~/.vim"))
@@ -189,11 +192,11 @@ if s:is_cygwin
     let &t_EI .= "\e[1 q"
     let &t_te .= "\e[0 q"
   endif
-  "カラースキーム
+  "set colorscheme
   colorscheme molokai
   set background=dark
 else
-  "カラースキーム
+  "set colorscheme
   colorscheme darkblue
   set background=dark
 endif
