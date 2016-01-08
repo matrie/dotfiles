@@ -105,23 +105,23 @@ endif
 "mkdir ~/.vim/bundle
 "git clone https://github.com/Shougo/neobundle.vim
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-  if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-  endif
-  
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  
-  "add scripts here
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimfiler'
-  NeoBundle 'davidhalter/jedi-vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'tomasr/molokai'
-  
-  call neobundle#end()
-  
-  filetype plugin indent on
+    if has('vim_starting')
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
+    
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    
+    "add scripts here
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/vimfiler'
+    NeoBundle 'davidhalter/jedi-vim'
+    NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'nanotech/jellybeans.vim'
+    NeoBundle 'tomasr/molokai'
+    
+    call neobundle#end()
+    
+    filetype plugin indent on
 
 endif
 
@@ -151,13 +151,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-"vim-indent-guides
-let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=85
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=73
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
-
 let s:is_cygwin  =  has('win32unix')
 let s:is_windows =  has('win32') || has('win64')
 let s:is_linux   =  has('unix')
@@ -165,40 +158,49 @@ let s:is_mac     =  has('mac')
 
 "set backupfile and undofile
 if s:is_cygwin || s:is_linux 
-  "cygwin
-  if isdirectory(expand("~/.vim"))
-    "undofile directory
-    set undodir=~/.vim/back_undo
-    
-    "backupfile directory
-    set backupdir=~/.vim/back_undo
-  endif
+    "cygwin
+    if isdirectory(expand("~/.vim"))
+        "undofile directory
+        set undodir=~/.vim/back_undo
+        
+        "backupfile directory
+        set backupdir=~/.vim/back_undo
+    endif
 elseif s:is_windows
-  "not cygwin setting
-  if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
-    "undofile directory
-    set undodir=D:\active\work\tech\99_textbkup
-    
-    "backupfile directory
-    set backupdir=D:\active\work\tech\99_textbkup
-  endif
+    "not cygwin setting
+    if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
+        "undofile directory
+        set undodir=D:\active\work\tech\99_textbkup
+        
+        "backupfile directory
+        set backupdir=D:\active\work\tech\99_textbkup
+    endif
 endif
 
 "set colorscheme
 if s:is_cygwin || s:is_linux 
-  if &term =~# '^xterm' && &t_Co < 256
-    set t_Co=256  " Extend terminal color of xterm
-  endif
-  if &term !=# 'cygwin'  " not in command prompt
-    " Change cursor shape depending on mode
-    let &t_ti .= "\e[1 q"
-    let &t_SI .= "\e[5 q"
-    let &t_EI .= "\e[1 q"
-    let &t_te .= "\e[0 q"
-  endif
-  colorscheme molokai
-  set background=dark
+    if &term =~# '^xterm' && &t_Co < 256
+        set t_Co=256  " Extend terminal color of xterm
+    endif
+    if &term !=# 'cygwin'  " not in command prompt
+        " Change cursor shape depending on mode
+        let &t_ti .= "\e[1 q"
+        let &t_SI .= "\e[5 q"
+        let &t_EI .= "\e[1 q"
+        let &t_te .= "\e[0 q"
+    endif
+    colorscheme molokai
+    set background=dark
 elseif s:is_windows
-  colorscheme darkblue
-  set background=dark
+    colorscheme darkblue
+    set background=dark
+endif
+
+"vim-indent-guides
+if s:is_cygwin || s:is_linux
+    let g:indent_guides_auto_colors=0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=85
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=73
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_guide_size=1
 endif
