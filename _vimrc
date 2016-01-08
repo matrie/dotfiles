@@ -101,22 +101,23 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-"NeoBundle
+"Neobundle setting
+"mkdir ~/.vim/bundle
+"git clone https://github.com/Shougo/neobundle.vim
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   if has('vim_starting')
-    "ñN®ÌÝruntimepathÉneobundleÌpXðwè·é
     set runtimepath+=~/.vim/bundle/neobundle.vim/
   endif
   
-  "neobundleðú»
   call neobundle#begin(expand('~/.vim/bundle/'))
   
-  "CXg[·évOCð±±ÉLq
+  "add scripts here
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/vimfiler'
   NeoBundle 'davidhalter/jedi-vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'tomasr/molokai'
   
   call neobundle#end()
   
@@ -124,10 +125,10 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
 
 endif
 
-"Nbv{[hAg
+"use clipboard for os
 set clipboard=unnamed
 
-"L[}bv
+"keymapping
 nnoremap [ %
 nnoremap ] %
 nnoremap <Space>l $
@@ -140,18 +141,17 @@ inoremap <C-j> <C-g><C-j>
 inoremap <C-k> <C-g><C-k>
 
 
-"¶R[hÌÝè
 set fileencoding=utf-8
 
 "sÔÌÇÁ
 set number
 
-"\tg^uÝè
+"tab setting
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" vim-indent-guides
+"vim-indent-guides
 let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=85
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=73
@@ -159,9 +159,12 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
 let s:is_cygwin  =  has('win32unix')
+let s:is_windows =  has('win32') || has('win64')
+let s:is_linux   =  has('unix')
+let s:is_mac     =  has('mac')
 
 "set backupfile and undofile
-if s:is_cygwin
+if s:is_cygwin || s:is_linux 
   "cygwin
   if isdirectory(expand("~/.vim"))
     "undofile directory
@@ -170,7 +173,7 @@ if s:is_cygwin
     "backupfile directory
     set backupdir=~/.vim/back_undo
   endif
-else
+elseif s:is_windows
   "not cygwin setting
   if isdirectory(expand("D:/active/work/tech/99_textbkup/"))
     "undofile directory
@@ -181,7 +184,8 @@ else
   endif
 endif
 
-if s:is_cygwin
+"set colorscheme
+if s:is_cygwin || s:is_linux 
   if &term =~# '^xterm' && &t_Co < 256
     set t_Co=256  " Extend terminal color of xterm
   endif
@@ -192,11 +196,9 @@ if s:is_cygwin
     let &t_EI .= "\e[1 q"
     let &t_te .= "\e[0 q"
   endif
-  "set colorscheme
   colorscheme molokai
   set background=dark
-else
-  "set colorscheme
+elseif s:is_windows
   colorscheme darkblue
   set background=dark
 endif
