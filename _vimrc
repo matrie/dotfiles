@@ -104,14 +104,14 @@ endif
 "NeoBundle
 if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
   if has('vim_starting')
-    "‰‰ñ‹N“®‚Ì‚İruntimepath‚Éneobundle‚ÌƒpƒX‚ğw’è‚·‚é
+    "ÂÂ‰Â‰Ã±Â‹NÂ“Â®ÂÂÂ‚ÃŒÂ‚ÃruntimepathÂ‚Ã‰neobundleÂ‚ÃŒÂƒpÂƒXÂ‚Ã°ÂwÂ’Ã¨Â‚Â·Â‚Ã©
     set runtimepath+=~/.vim/bundle/neobundle.vim/
   endif
   
-  "neobundle‚ğ‰Šú‰»
+  "neobundleÂ‚Ã°ÂÂ‰ÂŠÃºÂ‰Â»
   call neobundle#begin(expand('~/.vim/bundle/'))
   
-  "ƒCƒ“ƒXƒg[ƒ‹‚·‚éƒvƒ‰ƒOƒCƒ“‚ğ‚±‚±‚É‹Lq
+  "ÂƒCÂƒÂ“ÂƒXÂƒgÂ[ÂƒÂ‹Â‚Â·Â‚Ã©ÂƒvÂƒÂ‰ÂƒOÂƒCÂƒÂ“Â‚Ã°Â‚Â±Â‚Â±Â‚Ã‰Â‹LÂq
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/vimfiler'
   NeoBundle 'davidhalter/jedi-vim'
@@ -124,10 +124,10 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
 
 endif
 
-"ƒNƒŠƒbƒvƒ{[ƒh˜AŒg
+"ÂƒNÂƒÂŠÂƒbÂƒvÂƒ{Â[ÂƒhÂ˜AÂŒg
 set clipboard=unnamed
 
-"ƒL[ƒ}ƒbƒv
+"ÂƒLÂ[Âƒ}ÂƒbÂƒv
 nnoremap [ %
 nnoremap ] %
 nnoremap <Space>l $
@@ -140,13 +140,13 @@ inoremap <C-j> <C-g><C-j>
 inoremap <C-k> <C-g><C-k>
 
 
-"•¶šƒR[ƒh‚Ìİ’è
+"Â•Â¶ÂÂšÂƒRÂ[ÂƒhÂ‚ÃŒÂÃÂ’Ã¨
 set fileencoding=utf-8
 
-"s”Ô†‚Ì’Ç‰Á
+"ÂsÂ”Ã”ÂÂ†Â‚ÃŒÂ’Ã‡Â‰Ã
 set number
 
-"ƒ\ƒtƒgƒ^ƒuİ’è
+"Âƒ\ÂƒtÂƒgÂƒ^ÂƒuÂÃÂ’Ã¨
 set tabstop=4
 set shiftwidth=4
 set expandtab

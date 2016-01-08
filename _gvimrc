@@ -1,9 +1,9 @@
-"IME��ONOFF��Ԃ�ۑ����Ȃ�
-"r�ňꕶ�����ȂŒu������Ƃ��������Ȃ�H
+"IMEÌONOFFóÔðÛ¶µÈ¢
+"rÅê¶©ÈÅu··éÆ¨©µ­ÈéH
 set iminsert=0
 set imsearch=-1
 
-"�J���[�X�L�[��
+"J[XL[
 set t_Co=256
 colorscheme molokai
 set background=dark
