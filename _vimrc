@@ -101,30 +101,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-"Neobundle setting
-"mkdir ~/.vim/bundle
-"git clone https://github.com/Shougo/neobundle.vim
-if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-    if has('vim_starting')
-        set runtimepath+=~/.vim/bundle/neobundle.vim/
-    endif
-    
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    
-    "add scripts here
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'Shougo/vimfiler'
-    NeoBundle 'davidhalter/jedi-vim'
-    NeoBundle 'nathanaelkane/vim-indent-guides'
-    NeoBundle 'nanotech/jellybeans.vim'
-    NeoBundle 'tomasr/molokai'
-    
-    call neobundle#end()
-    
-    filetype plugin indent on
-
-endif
-
 "use clipboard for os
 set clipboard=unnamed
 
@@ -139,6 +115,7 @@ inoremap <C-d> <C-c><C-d>
 inoremap <C-u> <C-c><C-u>
 inoremap <C-j> <C-g><C-j>
 inoremap <C-k> <C-g><C-k>
+vnoremap * "zy:let @/ = @z<CR>n
 
 
 set fileencoding=utf-8
@@ -150,6 +127,31 @@ set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+"Neobundle setting
+"mkdir ~/.vim/bundle
+"git clone https://github.com/Shougo/neobundle.vim
+if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
+    if has('vim_starting')
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
+    
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    
+    "add scripts here
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/vimfiler'
+"    NeoBundle 'Shougo/neocomplete'
+    NeoBundle 'davidhalter/jedi-vim'
+    NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'nanotech/jellybeans.vim'
+    NeoBundle 'tomasr/molokai'
+    
+    call neobundle#end()
+    
+    filetype plugin indent on
+
+endif
 
 let s:is_cygwin  =  has('win32unix')
 let s:is_windows =  has('win32') || has('win64')
@@ -196,7 +198,7 @@ elseif s:is_windows
     set background=dark
 endif
 
-"vim-indent-guides
+"vim-indent-guides setting
 if s:is_cygwin || s:is_linux
     let g:indent_guides_auto_colors=0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=85
@@ -204,3 +206,17 @@ if s:is_cygwin || s:is_linux
     let g:indent_guides_enable_on_vim_startup=1
     let g:indent_guides_guide_size=1
 endif
+
+"jedi-vim setting
+"if s:is_cygwin || s:is_linux
+"	autocmd FileType python setlocal omnifunc=jedi#completions
+"	let g:jedi#completions_enabled = 0
+"	let g:jedi#auto_vim_configuration = 0
+"	let g:jedi#smart_auto_mappings = 0
+"	if !exists('g:neocomplete#force_omni_input_patterns')
+"	  let g:neocomplete#force_omni_input_patterns = {}
+"	endif
+"	let g:neocomplete#force_omni_input_patterns.python =
+"	\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"	" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+"endif
