@@ -170,8 +170,6 @@ if s:is_cygwin || s:is_linux
         
         "backupfile directory
         set backupdir=~/.vim/back_undo
-    elseif
-        echo 'not exist backup directory.'
     endif
 elseif s:is_windows
     "not cygwin setting
@@ -181,8 +179,6 @@ elseif s:is_windows
         
         "backupfile directory
         set backupdir=D:\active\work\tech\99_textbkup
-    elseif
-        echo 'not exist backup directory.'
     endif
 endif
 
