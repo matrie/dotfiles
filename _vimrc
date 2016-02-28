@@ -65,7 +65,7 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+  "filetype plugin indent on
   set cindent
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -73,7 +73,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  "autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -141,17 +141,20 @@ if isdirectory(expand("~/.vim/bundle/neobundle.vim"))
     "add scripts here
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/vimfiler'
+"   neocomplete need lua
 "    NeoBundle 'Shougo/neocomplete'
     NeoBundle 'davidhalter/jedi-vim'
     NeoBundle 'nathanaelkane/vim-indent-guides'
     NeoBundle 'nanotech/jellybeans.vim'
     NeoBundle 'tomasr/molokai'
+    NeoBundle 'vim-scripts/taglist.vim'
+    NeoBundle 'szw/vim-tags'
     
     call neobundle#end()
-    
-    filetype plugin indent on
 
 endif
+
+filetype plugin indent on
 
 let s:is_cygwin  =  has('win32unix')
 let s:is_windows =  has('win32') || has('win64')
@@ -161,12 +164,14 @@ let s:is_mac     =  has('mac')
 "set backupfile and undofile
 if s:is_cygwin || s:is_linux 
     "cygwin
-    if isdirectory(expand("~/.vim"))
+    if isdirectory(expand("~/.vim/back_undo"))
         "undofile directory
         set undodir=~/.vim/back_undo
         
         "backupfile directory
         set backupdir=~/.vim/back_undo
+    elseif
+        echo 'not exist backup directory.'
     endif
 elseif s:is_windows
     "not cygwin setting
@@ -176,6 +181,8 @@ elseif s:is_windows
         
         "backupfile directory
         set backupdir=D:\active\work\tech\99_textbkup
+    elseif
+        echo 'not exist backup directory.'
     endif
 endif
 
@@ -207,7 +214,31 @@ if s:is_cygwin || s:is_linux
     let g:indent_guides_guide_size=1
 endif
 
-"jedi-vim setting
+" taglist setting
+if s:is_cygwin || s:is_linux
+    set tags = tags
+    let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+    let Tlist_Show_One_File = 1
+    let Tlist_Use_Right_Window = 1
+    let Tlist_Exit_OnlyWindow = 1
+endif
+
+""neocomplete setting
+"if s:is_cygwin || s:is_linux
+"    let g:neocomplete#enable_at_startup = 1
+"    let g:neocomplete#enable_ignore_case = 1
+"    let g:neocomplete#enable_smart_case = 1
+"    if !exists('g:neocomplete#keyword_patterns')
+"        let g:neocomplete#keyword_patterns = {}
+"    endif
+"    let g:neocomplete#keyword_patterns._ = '\h\w*'
+"    
+"    highlight Pmenu ctermbg=248 guibg=#606060
+"    highlight PmenuSel ctermbg=159 guifg=#dddd00 guibg=#1f82cd
+"    highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+"endif
+"
+""jedi-vim with neocomplete setting
 "if s:is_cygwin || s:is_linux
 "	autocmd FileType python setlocal omnifunc=jedi#completions
 "	let g:jedi#completions_enabled = 0

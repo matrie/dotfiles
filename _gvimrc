@@ -1,10 +1,21 @@
-"IMEÌONOFFóÔðÛ¶µÈ¢
-"rÅê¶©ÈÅu··éÆ¨©µ­ÈéH
+"
 set iminsert=0
 set imsearch=-1
 
-"J[XL[
+"set colorscheme
 set t_Co=256
 colorscheme molokai
 set background=dark
     
+
+""jedi-vim with neocomplete setting
+"autocmd FileType python setlocal omnifunc=jedi#completions
+"let g:jedi#completions_enabled = 0
+"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#smart_auto_mappings = 0
+"if !exists('g:neocomplete#force_omni_input_patterns')
+"  let g:neocomplete#force_omni_input_patterns = {}
+"endif
+"let g:neocomplete#force_omni_input_patterns.python =
+"\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"" alternative pattern: '\h\w*\|[^. \t]\.\w*'
